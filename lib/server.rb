@@ -1,7 +1,7 @@
 require "rubygems"
 require "sinatra"
-require File.expand_path("#{Dir.pwd}/helper/helper.rb")
-require File.expand_path("#{Dir.pwd}/helper/bundle_exec.rb")
+require File.expand_path("#{File.dirname(__FILE__)}/helper/helper.rb")
+require File.expand_path("#{File.dirname(__FILE__)}/helper/bundle_exec.rb")
 
 include Server::Helper
 include BundleExec

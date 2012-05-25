@@ -1,5 +1,5 @@
 require "taas/version"
-import "#{Dir.pwd}/task/run_server.rake"
+import "#{File.dirname(__FILE__)}/task/run_server.rake"
 
 module Taas
   # Your code goes here...
