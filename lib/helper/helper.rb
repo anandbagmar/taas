@@ -5,7 +5,7 @@ module Server
     end
 
     def strip_output_tag(string)
-      string.gsub(/<WS Response Start>/,"").gsub(/<WS Response Completed>/,"")
+      string.gsub(/<WS Response Start>/,"").gsub(/<WS Response Completed>/,"").gsub(/\{/,"").gsub(/\}/,"")
     end
   end
 end
