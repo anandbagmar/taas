@@ -23,4 +23,6 @@ Gem::Specification.new do |s|
   # s.add_runtime_dependency "rest-client"
 
   s.add_dependency "sinatra"
+
+  s.add_dependency "test-unit"
 end
