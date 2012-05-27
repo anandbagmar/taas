@@ -4,7 +4,7 @@ require File.expand_path("#{File.dirname(__FILE__)}/helper/helper.rb")
 require File.expand_path("#{File.dirname(__FILE__)}/helper/command_runner.rb")
 
 include Server::Helper
-include BundleExec
+include CommandRunner
 
 
 get "/create_simple_live_sale/:name/:no_of_listing" do
