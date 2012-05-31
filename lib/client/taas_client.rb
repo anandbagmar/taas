@@ -5,13 +5,9 @@ module TaaS
 
     attr_accessor :url, :timeout
 
-    def initialize(url, timeout)
+    def initialize(url, timeout_in_seconds)
       @url = url
-      @timeout = timeout
-    end
-
-    def execute(contract_name,input_params={})
-      execute_contract(contract_name,input_params)
+      @timeout = timeout_in_seconds * 1000
     end
 
     private
@@ -35,7 +31,18 @@ module TaaS
     end
   end
 
-  def configure (url,timeout)
-    @taas = TaaSClient.new(url, timeout) if @taas.nil?
+  def configure (url,timeout_in_seconds)
+    @taas.nil? ? TaaSClient.new(url, timeout_in_seconds) : @taas
+  end
+
+  def execute(contract_name,input_params={})
+    if (@taas.nil?)
+      raise 'TaaS NOT configured. Please configure TaaS first by calling the following method:\n\tTaaS.configure(url,timeout)'
+    end
+    execute_contract(contract_name,input_params)
+  end
+
+  def reset
+    @taas = nil
   end
 end
