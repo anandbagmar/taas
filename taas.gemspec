@@ -5,8 +5,8 @@ require "taas/version"
 Gem::Specification.new do |s|
   s.name        = "taas"
   s.version     = Taas::VERSION
-  s.authors     = ["Akash"]
-  s.email       = ["akashm@thoughtworks.com"]
+  s.authors     = ["Anand Bagmar, Akash Mishra, Gaurav Pathak"]
+  s.email       = ["abagmar@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{TaaS: Test as a Service}
   s.description = %q{Gem provide a web services interface to run Test as a Services between two independent but related system}
