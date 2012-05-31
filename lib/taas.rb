@@ -1,14 +1,13 @@
 Dir.glob('**/*.rb').each { |r|
-  puts "Importing: #{r}"
+  puts "\t.. importing: #{r}"
   require r
 }
-#require "taas/version"
-
-#import "#{File.dirname(__FILE__)}/**/*.rake"
 
 module TaaS
   # Your code goes here...
-  def start_server
+  def self.start_server
     puts "TaaS.start_server"
+    server_path = "#{File.dirname(__FILE__)}/server/server.rb"
+    eval("ruby server_path")
   end
 end
