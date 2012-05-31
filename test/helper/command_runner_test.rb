@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), '../..', 'lib', 'helper', 'command_runner')
+require File.join(File.dirname(__FILE__), '../..', 'lib', 'server', 'helper', 'command_runner')
 require "test/unit"
 
 include CommandRunner

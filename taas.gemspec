@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Akash"]
   s.email       = ["akashm@thoughtworks.com"]
   s.homepage    = ""
-  s.summary     = %q{Testing As A Services}
+  s.summary     = %q{TaaS: Test as a Service}
   s.description = %q{Gem provide a web services interface to run Test as a Services between two independent but related system}
 
   s.rubyforge_project = "taas"
@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
 
+  s.add_dependency "rake"
   s.add_dependency "sinatra"
 
   s.add_dependency "test-unit"

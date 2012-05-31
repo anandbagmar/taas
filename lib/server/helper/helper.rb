@@ -8,7 +8,7 @@ module Server
     end
 
     def extract_output(command_output)
-      "#{command_output.match(/<WS Response Start>(.*)<WS Response Completed>/m)}"
+      "#{command_output.match(/<TaaS Response Start>(.*)<TaaS Response Completed>/m)}"
     end
 
     def strip_brackets(string)
@@ -16,7 +16,7 @@ module Server
     end
 
     def strip_output_tags(string)
-      string.gsub(/<WS Response Start>/,"").gsub(/<WS Response Completed>/,"")
+      string.gsub(/<TaaS Response Start>/,"").gsub(/<TaaS Response Completed>/,"")
     end
 
   end
