@@ -4,7 +4,7 @@ require "taas/version"
 
 Gem::Specification.new do |s|
   s.name        = "taas"
-  s.version     = Taas::VERSION
+  s.version     = TaaS::VERSION
   s.authors     = ["Anand Bagmar, Akash Mishra, Gaurav Pathak"]
   s.email       = ["abagmar@gmail.com"]
   s.homepage    = ""
