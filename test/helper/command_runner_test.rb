@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '../..', 'lib', 'server', 'helper', 'command_runner')
 require "test/unit"
 
-include CommandRunner
+include TaaS::CommandRunner
 
 class CommandRunnerTest < Test::Unit::TestCase
 

@@ -1,6 +1,6 @@
 require "taas/version"
-#import "#{File.dirname(__FILE__)}/task/run_server.rake"
+import "#{File.dirname(__FILE__)}/**/*.rake"
 
-module Taas
+module TaaS
   # Your code goes here...
 end

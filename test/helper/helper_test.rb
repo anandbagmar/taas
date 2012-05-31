@@ -1,7 +1,7 @@
 require File.join(File.dirname(__FILE__), '../..', 'lib', 'server', 'helper', 'helper')
 require "test/unit"
 
-include Server::Helper
+include TaaS::Server::Helper
 
 
 class ServerHelperTest < Test::Unit::TestCase
