@@ -1,7 +1,6 @@
 = TasS - Test as a Service
-====
 
-= Copyright
+== Copyright
 
 /**
  * Created by: Anand Bagmar
