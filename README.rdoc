@@ -1,5 +1,15 @@
 = TasS - Test as a Service
 
+Typically in organizations, there are multiple projects / products. Organizations like to have a common Test Automation
+solution across these products in an effort to standardize the framework.
+
+However, this is not a good idea!
+
+Each product should be tested using the tools and technologies that are <b>"right"</b> for it.
+
+<b>"TaaS - Test as a Service"</b> is a product that allows you do achieve the <b>"correct"</b> way of doing Test Automation.
+
+
 == Copyright
 
 /**
