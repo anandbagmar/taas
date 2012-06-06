@@ -16,5 +16,5 @@ CONTRACT = TaaS::ContractLoader.load_file("contracts.yaml")
 
 
 get "/contract/:contract_name" do
-  TaaS::CommandRunner(CONTRACT[params[:contract_name][:dir], CONTRACT[params[:contract_name][:command]])
+  TaaS::CommandRunner(CONTRACT[params[:contract_name][:dir]], CONTRACT[params[:contract_name][:command]])
 end
