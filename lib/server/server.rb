@@ -23,7 +23,7 @@ puts "Starting the TaaS server at http://localhost:4567"
 #  "{ #{output_result}, #{data}}"
 #end
 
-yaml = YAML.load_file("#{File.pwd}/#{ARGV[0]}")
+yaml = YAML.load_file("#{Dir.pwd}/#{ARGV[0]}")
 contracts = yaml.to_hash
 signature = ""
 cmd = ""
