@@ -3,7 +3,7 @@ require 'uri'
 require 'net/http'
 require "json"
 
-module TaaS
+module Client
 class TaaSClient
 
   attr_accessor :url, :timeout
