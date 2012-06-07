@@ -21,17 +21,7 @@ class TaaSClient
     http.read_timeout = @timeout
     response = http.request(request)
 
-    JSON.parse(strip_body_tags(parse_output(response.body)))
-  end
-
-  private
-
-  def strip_body_tags(string)
-    string.gsub(/<body>/, "").gsub(/<\/body>/, "")
-  end
-
-  def parse_output(body)
-    "#{body.match(/<body>(.*)<\/body>/m)}"
+    JSON.parse(response.body)
   end
 end
 

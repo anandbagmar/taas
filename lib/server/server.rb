@@ -16,16 +16,19 @@ CONTRACT = TaaS::ContractLoader.load_file("contracts.yaml")
 puts "CONTRACTS ARE #{CONTRACT.inspect}"
 
 post "/contract" do
+  content_type :json
+
   dir = CONTRACT["contracts"]["#{params[:contract_name]}"]["dir"]
   command = CONTRACT["contracts"]["#{params[:contract_name]}"]["command"]
   input_hash = params
 
-
   command_output = TaaS::CommandRunner.execute_contract(dir, command, input_hash)
   puts command_output
 
-  data = "\"json_output\" : [#{Server::Helper.parse_output(command_output)}]"
+  data = "\"json_output\" : [#{TaaS::Server::Helper.parse_output(command_output)}]"
+  puts data
   output_result = " \"passed\" : \"#{data.nil?}\""
-  "{ #{output_result}, #{data}}"
+  puts "{ #{output_result}, #{data}}"
 
+  "{ #{output_result}, #{data}}"
 end
