@@ -12,15 +12,20 @@ include TaaS::ContractLoader
 
 puts "Starting the TaaS server at http://localhost:4567"
 
-CONTRACT = TaaS::ContractLoader.load_file(ARGV[0])
-
+CONTRACT = TaaS::ContractLoader.load_file("contracts.yaml")
+puts "CONTRACTS ARE #{CONTRACT.inspect}"
 
 post "/contract" do
   dir = CONTRACT["contracts"]["#{params[:contract_name]}"]["dir"]
   command = CONTRACT["contracts"]["#{params[:contract_name]}"]["command"]
   input_hash = params
 
+
   command_output = TaaS::CommandRunner.execute_contract(dir, command, input_hash)
-  "{\"output\": \"#{command_output}\"}"
+  puts command_output
+
+  data = "\"json_output\" : [#{Server::Helper.parse_output(command_output)}]"
+  output_result = " \"passed\" : \"#{data.nil?}\""
+  "{ #{output_result}, #{data}}"
 
 end
