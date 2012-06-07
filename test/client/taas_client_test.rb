@@ -5,22 +5,30 @@ require "yaml"
 require "mocha"
 require "json"
 
+include TaaS
+
 class TaaSClientTest < Test::Unit::TestCase
 
   def test_execute_contract
     input_params = {:name => "taas"}
     output_params = {"id"=>1}
-
     taas_client = TaaSClient.new("http://localhost:4567/")
 
     uri = URI.parse("http://localhost:4567/")
     URI.stubs(:parse).with("http://localhost:4567/").returns(uri)
 
-    response = "<!DOCTYPE html>\n<html>\n<head>\n  <style type=\"text/css\">\n  body { text-align:center;font-family:helvetica,arial;font-size:22px;\n    color:#888;margin:20px}\n  #c {margin:0 auto;width:500px;text-align:left}\n  </style>\n</head>\n<body>{\"id\":1}</body>\n</html>\n"
+    http = Net::HTTP.new(uri.host, uri.port)
+    Net::HTTP.stubs(:new).with(uri.host,uri.port).returns(http)
+    stub_request = Net::HTTP::Post.new(uri.request_uri)
+    Net::HTTP::Post.stubs(:new).with(uri.request_uri).returns(stub_request)
 
+    stub_request.stubs(:set_form_data).with(input_params).returns(true)
+    stub_request.stubs(:read_timeout=).with(1000*10000).returns(true)
 
-    Net::HTTP.stubs(:post_form).with(uri, input_params).returns(Net::HTTPFound)
-    Net::HTTPFound.stubs(:body).returns(response)
+    response = "{\"id\":1}"
+    http.stubs(:request).with(stub_request).returns(response)
+    response.stubs(:body).returns(response)
+
 
     assert_equal output_params, taas_client.execute_contract("http://localhost:4567/", input_params)
 
