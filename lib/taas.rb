@@ -1,4 +1,4 @@
-require "lib/client/taas_client"
+require File.expand_path("#{File.dirname(__FILE__)}/lib/client/taas_client"
 
 module TaaS
   def self.start_server
