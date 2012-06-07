@@ -15,7 +15,7 @@ puts "Starting the TaaS server at http://localhost:4567"
 CONTRACT = TaaS::ContractLoader.load_file(ARGV[0])
 
 
-get "/contract/:contract_name" do
+post "/contract" do
   dir = CONTRACT["contracts"]["#{params[:contract_name]}"]["dir"]
   command = CONTRACT["contracts"]["#{params[:contract_name]}"]["command"]
   input_hash = params
