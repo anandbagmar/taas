@@ -21,7 +21,9 @@ class TaaSClient
     request.set_form_data(params)
     http.read_timeout = @timeout
     response = http.request(request)
-
+    puts "************** Response ******************"
+    puts response.body
+    puts "******************************************"
     JSON.parse(response.body)
   end
 end
