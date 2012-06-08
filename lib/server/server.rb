@@ -12,7 +12,7 @@ include TaaS::ContractLoader
 
 puts "Starting the TaaS server at http://localhost:4567"
 
-CONTRACT = TaaS::ContractLoader.load_file("contracts.yaml")
+CONTRACT = TaaS::ContractLoader.load_file(ARGV[0])
 puts "CONTRACTS ARE #{CONTRACT.inspect}"
 
 post "/contract" do
