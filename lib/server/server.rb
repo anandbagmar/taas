@@ -32,3 +32,7 @@ post "/contract" do
 
   "{ #{output_result}, #{data}}"
 end
+
+get "/" do
+  "Contract is -> #{CONTRACT.inspect}"
+end
