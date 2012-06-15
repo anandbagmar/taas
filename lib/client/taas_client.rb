@@ -13,7 +13,7 @@ class TaaSClient
     @timeout = timeout_in_seconds * 10000
   end
 
-  def execute_contract(contract_name, params={})
+  def execute_contract(params={})
     uri = URI.parse(@url)
     http = Net::HTTP.new(uri.host, uri.port)
 
