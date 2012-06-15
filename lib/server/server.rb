@@ -27,10 +27,10 @@ post "/contract" do
 
   data = "\"json_output\":{#{TaaS::Server::Helper.parse_output(command_output)}}"
   puts data
-  output_result = "\"failed\":\"#{data.nil?}\",\"command_output\":\"#{command_output}\""
+  output_result = "\"failed\":\"#{data.nil?}\""
   puts "{ #{output_result}, #{data}}"
 
-  "{#{output_result},#{data}}"
+  "<Taas command output start>#{command_output}<Taas command output ends>{#{output_result},#{data}}"
 end
 
 get "/" do
