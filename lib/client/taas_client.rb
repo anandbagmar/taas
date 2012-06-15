@@ -21,10 +21,15 @@ class TaaSClient
     request.set_form_data(params)
     http.read_timeout = @timeout
     response = http.request(request)
-    puts "************** Response ******************"
-    puts response.body
-    puts "******************************************"
-    JSON.parse(response.body)
+    response_hash_json, command_output = strip_command_output(response.body)
+    response_hash = JSON.parse(response.body)
+    return response_hash, command_output
+  end
+
+  def strip_command_output(response)
+    command_output = "#{response.scan(/command_output\"\:(.*)\,\"json/m)}"
+    response.gsub!(/command_output\"\:(.*)\,\"json/,'json')
+    return response, command_output
   end
 end
 end

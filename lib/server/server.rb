@@ -25,12 +25,12 @@ post "/contract" do
   command_output = TaaS::CommandRunner.execute_contract(dir, command, input_hash)
   puts command_output
 
-  data = "\"json_output\" : {#{TaaS::Server::Helper.parse_output(command_output)}}"
+  data = "\"json_output\":{#{TaaS::Server::Helper.parse_output(command_output)}}"
   puts data
-  output_result = " \"passed\" : \"#{data.nil?}\""
+  output_result = "\"failed\":\"#{data.nil?}\",\"command_output\":\"#{command_output}\""
   puts "{ #{output_result}, #{data}}"
 
-  "{ #{output_result}, #{data}}"
+  "{#{output_result},#{data}}"
 end
 
 get "/" do
