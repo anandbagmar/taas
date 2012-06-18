@@ -28,8 +28,8 @@ module Client
     end
 
     def strip_command_output(response)
-      command_output = "#{response.scan(/<Taas command output start>(.*)<Taas command output ends>/m)}"
-      response = "#{response.scan(/<Taas command output ends>(.*)/m)}"
+      command_output = response.scan(/<Taas command output start>(.*)<Taas command output ends>/m).flatten.first
+      response = response.scan(/<Taas command output ends>(.*)/m).flatten.first
       return response, command_output
     end
   end
