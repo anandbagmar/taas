@@ -22,15 +22,15 @@ module Client
       http.read_timeout = @timeout
       response = http.request(request)
 
-      return result_output_hash_and_console_log(response.body)
+      response_hash_json, command_output = strip_command_output(response.body)
+      response_hash = JSON.parse(response_hash_json)
+      return response_hash, command_output
     end
 
-    def result_output_hash_and_console_log(response_body)
-      console_log = response_body.scan(/<Taas command output start>(.*)<Taas command output ends>/m).flatten.first
-      response_body.gsub!(/<Taas command output start>(.*)<Taas command output ends>/,"")
-      response_hash = JSON.parse(response_body, {:symbolize_names => true})
-      response_hash.delete(:console_log)
-      return response_hash, console_log
+    def strip_command_output(response)
+      command_output = response.scan(/<Taas command output start>(.*)<Taas command output ends>/m).flatten.first
+      response = response.scan(/<Taas command output ends>(.*)/m).flatten.first
+      return response, command_output
     end
   end
 end
