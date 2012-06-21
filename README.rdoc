@@ -1,4 +1,4 @@
-= TasS - Test as a Service
+= TaaS - Test as a Service
 
 Typically in organizations, there are multiple projects / products. Organizations like to have a common Test Automation
 solution across these products in an effort to standardize the framework.
