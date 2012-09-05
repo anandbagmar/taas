@@ -9,6 +9,9 @@ Each product should be tested using the tools and technologies that are <b>"righ
 
 <b>"TaaS - Test as a Service"</b> is a product that allows you do achieve the <b>"correct"</b> way of doing Test Automation.
 
+= Documentation
+
+Check the doc[https://github.com/anandbagmar/taas/tree/master/doc] folder for information about TaaS and how to use it.
 
 == Copyright
 
