@@ -1,14 +1,13 @@
-require File.expand_path("#{File.dirname(__FILE__)}/client/taas_client")
+require "server"
+require "taas_client"
 
-module TaaS
+class TaaS
   def self.start_server(contract_file)
-    puts "Starting TaaS Server with Contract File #{contract_file}"
-    server_path = "#{File.dirname(__FILE__)}/server/server.rb #{contract_file}"
-    `ruby #{server_path}`
+      ContractManager.load_contract(contract_file)
+      CommandExecuter.execute_command("ruby server.rb",File.dirname(__FILE__))
   end
 
   def self.client(url,timeout)
-    Client::TaaSClient.new(url,timeout)
+    TaaSClient.new(url,timeout)
   end
 end
-
