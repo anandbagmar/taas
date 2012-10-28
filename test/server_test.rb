@@ -1,8 +1,5 @@
 require File.join(Dir.pwd, 'lib', 'server')
-require "test/unit"
-require "rack/test"
-require "shoulda"
-require "mocha"
+require_relative "test_helper"
 
 ENV['RACK_ENV']='test'
 

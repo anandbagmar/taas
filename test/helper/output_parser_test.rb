@@ -1,7 +1,5 @@
 require_relative File.join('../..', 'lib', 'helper', 'output_parser')
-require "test/unit"
-require "mocha"
-require "shoulda"
+require_relative File.join('../',"test_helper")
 
 class OutputParserTest < Test::Unit::TestCase
   context "parse_taas_output" do

@@ -1,10 +1,5 @@
-require "rubygems"
 require File.join(Dir.pwd, 'lib', 'taas_client')
-require "test/unit"
-require "yaml"
-require "mocha"
-require "json"
-require "shoulda-context"
+require_relative "test_helper"
 
 
 class TaaSClientTest < Test::Unit::TestCase

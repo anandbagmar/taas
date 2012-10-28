@@ -1,7 +1,6 @@
 require_relative File.join('../..', 'lib', 'helper', 'command_executer')
-require "test/unit"
-require "mocha"
-require "shoulda"
+require_relative File.join('../',"test_helper")
+
 
 class CommandExecuterTest < Test::Unit::TestCase
   context "execute_contract" do
