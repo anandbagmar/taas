@@ -3,16 +3,16 @@ module TaaS
 
     @@contract_hash = {}
 
-    def self.load_contract(absolute_path)
+    def self.load(absolute_path)
       raise "File path cant be nil or empty" if absolute_path.empty?
       @@contract_hash = YAML.load_file(absolute_path) rescue {}
     end
 
-    def self.contract_loaded?
-      !@@contract_hash.eql?({})
+    def self.is_empty?
+      @@contract_hash.eql?({})
     end
 
-    def self.is_valid_contract?(contract_name)
+    def self.contains?(contract_name)
       @@contract_hash["contracts"].keys.include?(contract_name)
     end
 

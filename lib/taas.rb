@@ -4,7 +4,7 @@ require "taas_client"
 module Taas
   class << self
     def self.start_server(contract_file)
-      ContractManager.load_contract(contract_file)
+      Contracts.load(contract_file)
       CommandExecuter.execute_command("ruby server.rb", File.dirname(__FILE__))
     end
 
