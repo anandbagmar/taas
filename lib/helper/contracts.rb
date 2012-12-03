@@ -1,5 +1,5 @@
 module TaaS
-  class ContractManger
+  class Contracts
 
     @@contract_hash = {}
 
