@@ -20,9 +20,10 @@ post "/contract" do
 
   dir = CONTRACT["contracts"]["#{params[:contract_name]}"]["dir"]
   command = CONTRACT["contracts"]["#{params[:contract_name]}"]["command"]
+  expected_input_param_format = CONTRACT["contracts"]["#{params[:contract_name]}"]["input_param_format"] || "key=value"
   input_hash = params
 
-  command_output = TaaS::CommandRunner.execute_contract(dir, command, input_hash)
+  command_output = TaaS::CommandRunner.execute_contract(dir, command, input_hash, expected_input_param_format)
   puts command_output
 
   output_hash = TaaS::Server::Helper.parse_output(command_output).gsub(/\n/,"")
