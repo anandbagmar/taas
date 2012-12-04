@@ -5,15 +5,21 @@ module TaaS
 
     def self.load(absolute_path)
       raise "File path cant be nil or empty" if absolute_path.empty?
-      @@contract_hash = YAML.load_file(absolute_path) rescue {}
+      @@contract_hash = YAML.load_file(absolute_path)["contracts"] rescue {}
     end
 
     def self.is_empty?
-      @@contract_hash.eql?({})
+      @@contract_hash.eql?({}) || @@contract_hash.nil?
     end
 
     def self.contains?(contract_name)
-      @@contract_hash["contracts"].keys.include?(contract_name)
+      @@contract_hash.keys.include?(contract_name)
+    end
+
+    def self.get_contract(contract_name)
+      return nil unless contains?(contract_name)
+      contract = Contract.new @@contract_hash[contract_name]
+      contract
     end
 
     def self.get_execution_attribute(attribute, contract_name)
