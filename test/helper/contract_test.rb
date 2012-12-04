@@ -31,4 +31,31 @@ class ContractTest < Test::Unit::TestCase
       assert_false contract.has_property?("key")
     end
   end
+
+  context "command" do
+    should "return the parameter string replaced in the place of <taas_params> template" do
+      command_template = "play <taas_params> test"
+      parameter_string = "-Dorder_id=1 -Dname=s"
+      contract_hash = {"dir" => "/home", "command" => command_template, "input_param_format" => "-Dkey=value", :input_params =>{:order_id => nil}, :output_params =>{}}
+      parameter = {:order_id => 1, :name => "s"}
+      contract = Contract.new(contract_hash)
+
+      ParameterFactory.stubs(:generate_parameter_string).with("-Dkey=value",parameter).returns(parameter_string)
+
+      assert_equal "play #{parameter_string} test",contract.command(parameter)
+    end
+
+    should "return the parameter string append to command if no <taas_params> template is specified" do
+      command_template = "play test"
+      parameter_string = "order_id=1 name=s"
+      parameter = {:order_id => 1, :name => "s"}
+      contract_hash = {"dir" => "/home", "command" => command_template, "input_param_format" => "key=value", :input_params =>{:order_id => nil}, :output_params =>{}}
+      contract = Contract.new(contract_hash)
+
+      ParameterFactory.stubs(:generate_parameter_string).with("key=value",parameter).returns(parameter_string)
+
+      puts "*"*50
+      assert_equal "#{command_template}#{parameter_string}",contract.command(parameter)
+    end
+  end
 end

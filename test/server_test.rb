@@ -58,16 +58,17 @@ class ServerTest < Test::Unit::TestCase
       response_json = '{"pass":"true","data":{"params1":"value1","params2":"value2"}'
       output = "All files and dir<TaaS Response Start>#{response_json}<TaaS Response Complete>"
       contract_name = "Contract Exists"
+      params = {"contract_name" => contract_name}
       contract = Contract.new({})
       Contracts.stubs(:is_empty?).returns(false)
       Contracts.stubs(:contains?).with(contract_name).returns(true)
       Contracts.stubs(:get_contract).with(contract_name).returns(contract)
-      Contract.any_instance.stubs(:value_of).with("command").returns(command)
+      Contract.any_instance.stubs(:command).with(params).returns(command)
       Contract.any_instance.stubs(:value_of).with("dir").returns(dir)
       CommandExecuter.stubs(:execute_command).with(command,dir).returns(output)
       OutputParser.stubs(:parse_taas_output).with(output).returns(response_json)
 
-      post "/contract", params = {:contract_name => contract_name}
+      post "/contract", params
 
       assert last_response.ok?
       assert last_response.body.include?("<TaaS-Server-Response><Taas-Output>#{output}</TaaS-Output><TaaS-Json>#{response_json}</TaaS-Json></TaaS-Server-Response>")
