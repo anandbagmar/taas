@@ -15,7 +15,7 @@ module TaaS
     def create_params_string(input_hash, expected_input_param_format)
       input_string = " "
       input_hash.each_pair do |key, value|
-        input_string+= expected_input_param_format.gsub("key"," taas_"+key.to_s).gsub("value",value.to_s)
+        input_string+= expected_input_param_format.gsub("key","taas_"+key.to_s).gsub("value",value.to_s)
       end
       input_string
     end
