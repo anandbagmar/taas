@@ -14,6 +14,8 @@ class ServerTest < Test::Unit::TestCase
 
     should "return the pass attribute as false if the contract is not loaded" do
       contract_name = "Do Not Exists"
+      file_name = "file_name"
+      Contracts.stubs(:load).with(ARGV[0]).returns(file_name)
       Contracts.stubs(:is_empty?).returns(true)
       output = "Contract Name is either nil or not valid."
       response_json = '{"pass":"false","data":{}}'
@@ -26,6 +28,8 @@ class ServerTest < Test::Unit::TestCase
     end
     should "return the pass attribute as false if the contract is loaded but requested contract is not valid" do
       contract_name = "Do Not Exists"
+      file_name = "file_name"
+      Contracts.stubs(:load).with(ARGV[0]).returns(file_name)
       Contracts.stubs(:is_empty?).returns(false)
       Contracts.stubs(:contains?).with(contract_name).returns(false)
       output = "Contract Name is either nil or not valid."
@@ -40,6 +44,8 @@ class ServerTest < Test::Unit::TestCase
 
     should "not return pass attribute as false if the specificed contract do not exist but CONTACT_MANGER is initialized" do
       contract_name = "Do Not Exists"
+      file_name = "file_name"
+      Contracts.stubs(:load).with(ARGV[0]).returns(file_name)
       Contracts.stubs(:contains?).with(contract_name).returns(false)
       output = "Contract Name is either nil or not valid."
       response_json = '{"pass":"false","data":{}}'
@@ -60,12 +66,14 @@ class ServerTest < Test::Unit::TestCase
       contract_name = "Contract Exists"
       params = {"contract_name" => contract_name}
       contract = Contract.new({})
+      file_name = "file_name"
+      Contracts.stubs(:load).with(ARGV[0]).returns(file_name)
       Contracts.stubs(:is_empty?).returns(false)
       Contracts.stubs(:contains?).with(contract_name).returns(true)
       Contracts.stubs(:get_contract).with(contract_name).returns(contract)
       Contract.any_instance.stubs(:command).with(params).returns(command)
       Contract.any_instance.stubs(:value_of).with("dir").returns(dir)
-      CommandExecuter.stubs(:execute_command).with(command,dir).returns(output)
+      CommandExecuter.stubs(:execute_command).with(dir,command).returns(output)
       OutputParser.stubs(:parse_taas_output).with(output).returns(response_json)
 
       post "/contract", params

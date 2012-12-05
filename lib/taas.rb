@@ -5,8 +5,7 @@ require "helper/contracts"
 
 module TaaS
     def self.start_server(contract_file)
-      Contracts.load(contract_file)
-      CommandExecuter.execute_contract(File.dirname(__FILE__),"ruby server.rb")
+      CommandExecuter.execute_contract(File.dirname(__FILE__),"ruby server.rb #{contract_file}")
     end
 
     def self.client(url, timeout)

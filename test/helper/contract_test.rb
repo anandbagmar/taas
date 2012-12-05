@@ -54,7 +54,6 @@ class ContractTest < Test::Unit::TestCase
 
       ParameterFactory.stubs(:generate_parameter_string).with("key=value",parameter).returns(parameter_string)
 
-      puts "*"*50
       assert_equal "#{command_template}#{parameter_string}",contract.command(parameter)
     end
   end
