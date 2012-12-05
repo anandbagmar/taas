@@ -4,6 +4,8 @@ require "helper/contracts"
 require "helper/command_executer"
 require "helper/output_parser"
 
+include TaaS
+
 Contracts.load(ARGV[0])
 
 post "/contract" do
