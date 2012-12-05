@@ -3,6 +3,8 @@ require "sinatra"
 require "helper/contracts"
 require "helper/command_executer"
 require "helper/output_parser"
+require "helper/contract"
+require "helper/parameter_factory"
 
 include TaaS
 
