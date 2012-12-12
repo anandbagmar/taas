@@ -1,7 +1,6 @@
-require "server"
+
 require "taas_client"
 require "helper/command_executer"
-require "helper/contracts"
 
 module TaaS
     def self.start_server(contract_file)
