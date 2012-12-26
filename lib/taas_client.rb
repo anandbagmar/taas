@@ -17,15 +17,12 @@ module TaaS
     def execute_contract(params={})
       response_body = request_taas_server(params)
 
-      raise "TaaS Request is false" unless valid_server_response?(response_body)
+      raise "TaaS Request is false" unless OutputParser.valid_server_response?(response_body)
 
       OutputParser.parse_server_output(response_body)
     end
 
-    def valid_server_response?(response)
-      pattern=/<TaaS-Server-Response><Taas-Output>(.*)<\/TaaS-Output><TaaS-Json>(.*)<\/TaaS-Json><\/TaaS-Server-Response>/
-      !pattern.match(response).nil?
-    end
+
 
     def request_taas_server(params)
       uri = URI.parse(@url)

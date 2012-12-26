@@ -15,7 +15,7 @@ class TaaSClientTest < Test::Unit::TestCase
     end
     should "return hash and command output of server if failed is false" do
       @taas_client.stubs(:request_taas_server).with(@params).returns(@server_output)
-      @taas_client.stubs(:valid_server_response?).with(@server_output).returns(true)
+      OutputParser.stubs(:valid_server_response?).with(@server_output).returns(true)
       values = lambda {return @output,@hash}
       OutputParser.stubs(:parse_server_output).with(@server_output).returns(values.call)
 
@@ -28,7 +28,7 @@ class TaaSClientTest < Test::Unit::TestCase
 
     should "raise an error if validate_server returns false" do
       @taas_client.stubs(:request_taas_server).with(@params).returns(@server_output)
-      @taas_client.stubs(:valid_server_response?).with(@server_output).returns(false)
+      OutputParser.stubs(:valid_server_response?).with(@server_output).returns(false)
 
       assert_raise do
         @taas_client.execute_contract(@params)
@@ -36,37 +36,7 @@ class TaaSClientTest < Test::Unit::TestCase
     end
   end
 
-  context "valid_server_response?" do
-    setup do
-      @taas_client = TaaSClient.new("http://taas-url.com/")
-    end
 
-    should "return false if the response is not same as TaaS server template" do
-      server_output = "<Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert_false @taas_client.valid_server_response?(server_output)
-
-      server_output = "<TaaS-Server-Response>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert_false @taas_client.valid_server_response?(server_output)
-
-      server_output = "<TaaS-Server-Response><Taas-Output>Dummy output<TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert_false @taas_client.valid_server_response?(server_output)
-
-      server_output = "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert_false @taas_client.valid_server_response?(server_output)
-
-      server_output = "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Server-Response>"
-      assert_false @taas_client.valid_server_response?(server_output)
-
-      server_output = "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json>"
-      assert_false @taas_client.valid_server_response?(server_output)
-    end
-
-    should "return true if the response is not same as TaaS server template" do
-      server_output =  "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert @taas_client.valid_server_response?(server_output)
-    end
-
-  end
 
   context "request_taas_server" do
     should "return the body of the taas server response" do
