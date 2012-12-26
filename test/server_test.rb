@@ -83,4 +83,21 @@ class ServerTest < Test::Unit::TestCase
     end
   end
 
-end
+
+  context "get /" do
+
+    should "display the table version of the loaded Contracts" do
+      contract_name = "Do Not Exists"
+      file_name = "file_name_get"
+      Contracts.stubs(:load).with(ARGV[0]).returns(file_name)
+      Contracts.stubs(:get_all_contracts).returns({"c1" => {"command" => "one","dir"=>"pwd"},"c2" => {"command" => "two","dir"=>"pwd1"} })
+      html_code='<table width="600" border="1"><tr><th>Contract Name</th><th>Contract parameters</th></tr><tr><td>c1</td><td><table width="400" border="1"><tr><th>KEY</th><th>VALUE</th></tr><tr><td>command</td><td>one</td></tr><tr><td>dir</td><td>pwd</td></tr></table></td></tr><tr><td>c2</td><td><table width="400" border="1"><tr><th>KEY</th><th>VALUE</th></tr><tr><td>command</td><td>two</td></tr><tr><td>dir</td><td>pwd1</td></tr></table></td></tr></table>'
+
+      get "/"
+
+      assert last_response.ok?
+      assert_true last_response.body.include?(html_code)
+    end
+  end
+
+    end

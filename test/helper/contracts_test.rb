@@ -83,4 +83,15 @@ class ContractsTest < Test::Unit::TestCase
     end
   end
 
+  context "get_all_contracts" do
+    setup {
+      @contract_file_absolute_path = "a1/a2"
+      @contract_name = :create_live_sale
+      YAML.stubs(:load_file).with(@contract_file_absolute_path).returns(CONTRACT_HASH)
+      Contracts.load(@contract_file_absolute_path)
+    }
+    should "return all the contracts" do
+      assert_equal CONTRACT_HASH["contracts"],Contracts.get_all_contracts
+    end
+  end
 end

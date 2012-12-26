@@ -26,5 +26,9 @@ module TaaS
       return nil if @@contract_hash.nil? || @@contract_hash.eql?({})
       @@contract_hash["contracts"][contract_name.to_s][attribute]
     end
+
+    def self.get_all_contracts
+      return @@contract_hash
+    end
   end
 end
