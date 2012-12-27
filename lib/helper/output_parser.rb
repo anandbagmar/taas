@@ -2,7 +2,7 @@ require "json"
 module TaaS
   class OutputParser
     def self.parse_taas_output(output)
-      output.scan(/<TaaS Response Start>(.*)<TaaS Response Complete>/m)
+      output.scan(/<TaaS Response Start>(.*)<TaaS Response Complete>/m).first.first rescue nil
     end
 
     def self.parse_server_output(response_body)

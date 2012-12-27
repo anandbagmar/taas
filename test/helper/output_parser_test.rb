@@ -8,7 +8,14 @@ class OutputParserTest < Test::Unit::TestCase
       response_json = '"paas":"true","data":{}'
       output = "this is core output.<TaaS Response Start>#{response_json}<TaaS Response Complete>"
 
-      assert_equal OutputParser.parse_taas_output(output).first.first,response_json
+      assert_equal OutputParser.parse_taas_output(output),response_json
+    end
+
+    should "return nil if the output format is not correct" do
+      response_json = '"paas":"true","data":{}'
+      output = "this is core output.#{response_json}<TaaS Response Complete>"
+
+      assert_nil OutputParser.parse_taas_output(output)
     end
   end
 
