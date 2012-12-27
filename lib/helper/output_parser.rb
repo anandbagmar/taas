@@ -15,8 +15,7 @@ module TaaS
     end
 
     def self.valid_server_response?(response)
-      pattern=/<TaaS-Server-Response><Taas-Output>(.*)<\/TaaS-Output><TaaS-Json>(.*)<\/TaaS-Json><\/TaaS-Server-Response>/
-      !pattern.match(response).nil?
+      !(response.scan(/<Taas-Output>(.*)<\/TaaS-Output>/m).empty? || response.scan(/<TaaS-Json>(.*)<\/TaaS-Json>/m).empty?)
     end
   end
 end

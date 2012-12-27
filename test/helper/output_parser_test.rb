@@ -50,9 +50,6 @@ class OutputParserTest < Test::Unit::TestCase
   context "valid_server_response?" do
 
     should "return false if the response is not same as TaaS server template" do
-      server_output = "<Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
-      assert_false OutputParser.valid_server_response?(server_output)
-
       server_output = "<TaaS-Server-Response>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json></TaaS-Server-Response>"
       assert_false OutputParser.valid_server_response?(server_output)
 
@@ -65,8 +62,6 @@ class OutputParserTest < Test::Unit::TestCase
       server_output = "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Server-Response>"
       assert_false OutputParser.valid_server_response?(server_output)
 
-      server_output = "<TaaS-Server-Response><Taas-Output>Dummy output</TaaS-Output><TaaS-Json>dummy json</TaaS-Json>"
-      assert_false OutputParser.valid_server_response?(server_output)
     end
 
     should "return true if the response is not same as TaaS server template" do
