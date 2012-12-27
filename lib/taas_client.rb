@@ -31,7 +31,7 @@ module TaaS
       request = Net::HTTP::Post.new(uri.request_uri)
       request.set_form_data(params)
       http.read_timeout = @timeout
-      http.request(request)
+      http.request(request).body
     end
   end
 end
