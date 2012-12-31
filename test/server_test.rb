@@ -11,7 +11,6 @@ class ServerTest < Test::Unit::TestCase
   end
 
   context "post /contract" do
-
     should "return the pass attribute as false if the contract is not loaded" do
       contract_name = "Do Not Exists"
       file_name = "file_name"
