@@ -1,10 +1,10 @@
 require "sinatra"
 
-require "helper/contracts"
-require "helper/command_executer"
-require "helper/output_parser"
-require "helper/contract"
-require "helper/parameter_factory"
+
+#Dir.glob(File.join("#{$PROJECT_ROOT}", "lib","helper", "**", "*_test.rb")).each do |test_file|
+#  puts "requiring #{test_file}"
+#  require "#{test_file}"
+#end
 
 include TaaS
 
