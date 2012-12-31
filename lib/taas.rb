@@ -1,6 +1,6 @@
 
 require "taas_client"
-require "helper/command_executer"
+require File.join($PROJECT_ROOT,"lib","helper","command_executer")
 
 module TaaS
     def self.start_server(contract_file)

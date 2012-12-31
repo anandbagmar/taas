@@ -2,7 +2,7 @@ require "rubygems"
 require 'uri'
 require 'net/http'
 require "json"
-require "helper/output_parser"
+require File.join($PROJECT_ROOT,"lib","helper","output_parser")
 
 module TaaS
   class TaaSClient
