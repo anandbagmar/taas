@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["abagmar@gmail.com, akash.mishra20@gmail.com"]
   s.homepage    = "https://github.com/anandbagmar/taas"
   s.summary     = %q{TaaS: Test as a Service}
-  s.description = %q{Gem provide a web services interface to run Test as a Services between two independent but related system. See the blog for more details: http://goo.gl/nVShb}
+  s.description = %q{“TaaS - Test as a Service” is a product that allows you to validate the integration across a variety of products via Test Automation - the “correct” way. TaaS uses a web service interface to run your end-2-end integration tests between two independent but related system. See the blog for more details: http://goo.gl/nVShb}
 
   s.rubyforge_project = "taas"
 
