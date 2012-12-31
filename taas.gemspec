@@ -24,7 +24,10 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rake"
   s.add_dependency "sinatra"
+  s.add_dependency "json"
 
   s.add_development_dependency "test-unit"
   s.add_development_dependency "mocha"
+  s.add_development_dependency "shoulda"
+  s.add_development_dependency "rack-test"
 end
