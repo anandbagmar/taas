@@ -1,6 +1,16 @@
 source "http://rubygems.org"
 
-# Specify your gem's dependencies in taas.gemspec
-gemspec
+group :development do
+  gem "test-unit"
+  gem "mocha"
+  gem "shoulda"
+  gem "rack-test"
+  gem "jeweler"
+  gem "pry"
+  gem "pry-nav"
+end
 
+gem "rake"
+gem "sinatra"
+gem "json"
 
