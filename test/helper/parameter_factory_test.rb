@@ -1,5 +1,5 @@
-require_relative File.join('../..', 'lib', 'helper', 'parameter_factory')
-require_relative File.join('../',"test_helper")
+require File.join($PROJECT_ROOT,'lib', 'helper', 'parameter_factory')
+require File.join($PROJECT_ROOT, 'test',"test_helper")
 
 class ParameterFactoryTest < Test::Unit::TestCase
 
@@ -11,7 +11,10 @@ class ParameterFactoryTest < Test::Unit::TestCase
 
       generated_string = ParameterFactory.generate_parameter_string(template,params_hash)
 
-      assert_equal generated_string,expected_string
+      assert_true generated_string.include?("-Dorder_id=1")
+      assert_true generated_string.include?("-Dname=s")
+      puts generated_string.gsub("-Dname=s","").gsub("-Dorder_id=1","")
+
     end
 
     should "create command line in params in key=value template if no template is specified" do
@@ -20,7 +23,8 @@ class ParameterFactoryTest < Test::Unit::TestCase
 
       generated_string = ParameterFactory.generate_parameter_string(nil,params_hash)
 
-      assert_equal generated_string,expected_string
+      assert_true generated_string.include?("order_id=1")
+      assert_true generated_string.include?("name=s")
 
     end
   end

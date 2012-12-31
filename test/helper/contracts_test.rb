@@ -1,5 +1,5 @@
-require_relative File.join('../..', 'lib', 'helper', 'contracts')
-require_relative File.join('../',"test_helper")
+require File.join($PROJECT_ROOT, 'lib', 'helper', 'contracts')
+require File.join($PROJECT_ROOT, 'test',"test_helper")
 
 
 class ContractsTest < Test::Unit::TestCase

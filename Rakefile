@@ -1,4 +1,4 @@
-
+$PROJECT_ROOT="/Akash Disk/ThougthWorks Project/taas"
 namespace :test do
   desc "run all unit test"
   task :unit do

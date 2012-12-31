@@ -1,5 +1,5 @@
-require_relative File.join('../..', 'lib', 'helper', 'command_executer')
-require_relative File.join('../',"test_helper")
+require File.join($PROJECT_ROOT, 'lib', 'helper', 'command_executer')
+require File.join($PROJECT_ROOT, 'test',"test_helper")
 
 
 class CommandExecuterTest < Test::Unit::TestCase

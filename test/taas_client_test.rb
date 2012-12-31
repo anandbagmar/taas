@@ -1,5 +1,5 @@
-require File.join(Dir.pwd, 'lib', 'taas_client')
-require_relative "test_helper"
+require File.join($PROJECT_ROOT, 'lib', 'taas_client')
+require File.join($PROJECT_ROOT, 'test',"test_helper")
 
 
 class TaaSClientTest < Test::Unit::TestCase
