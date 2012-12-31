@@ -5,11 +5,11 @@ require "taas/version"
 Gem::Specification.new do |s|
   s.name        = "taas"
   s.version     = TaaS::VERSION
-  s.authors     = ["Anand Bagmar, Akash Mishra, Gaurav Pathak"]
-  s.email       = ["abagmar@gmail.com"]
-  s.homepage    = ""
+  s.authors     = ["Anand Bagmar, Akash Mishra"]
+  s.email       = ["abagmar@gmail.com, akash.mishra20@gmail.com"]
+  s.homepage    = "https://github.com/anandbagmar/taas"
   s.summary     = %q{TaaS: Test as a Service}
-  s.description = %q{Gem provide a web services interface to run Test as a Services between two independent but related system}
+  s.description = %q{Gem provide a web services interface to run Test as a Services between two independent but related system. See the blog for more details: http://goo.gl/nVShb}
 
   s.rubyforge_project = "taas"
 
