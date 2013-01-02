@@ -1,6 +1,6 @@
 $PROJECT_ROOT=File.expand_path(File.dirname(__FILE__))
 
-namespace :test do
+namespace :taas do
   desc "run all unit test"
   task :unit do
     Dir['test/**/*_test.rb'].each { |testCase|
@@ -26,4 +26,3 @@ Jeweler::Tasks.new do |gem|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-task :default => 'test:unit'
