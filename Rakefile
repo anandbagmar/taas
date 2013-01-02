@@ -25,5 +25,3 @@ Jeweler::Tasks.new do |gem|
   gem.rubyforge_project = "taas"
 end
 Jeweler::RubygemsDotOrgTasks.new
-
-task :default => 'test:unit'
