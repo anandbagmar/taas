@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name              = "taas"
   gem.homepage          = "http://github.com/anandbagmar/taas"
   gem.license           = "Apache 2.0"
-  gem.summary           = %q{TaaS: Test as a Service}
-  gem.description       = %q{"TaaS - Test as a Service" is a product that allows you to validate the integration across a variety of products via Test Automation - the "correct" way. TaaS uses a web service interface to run your end-2-end integration tests between two independent but related system. See the blog for more details: http://goo.gl/nVShb}
+  gem.summary           = %q{TaaS}
+  gem.description       = %q{"TaaS" allows you to validate the integration across a variety of products via Test Automation - the "correct" way. TaaS uses a web service interface to run your end-2-end integration tests between two independent but related system. See the blog for more details: http://goo.gl/nVShb}
   gem.authors           = ["Anand Bagmar, Akash Mishra"]
   gem.email             = ["abagmar@gmail.com, akash.mishra20@gmail.com"]
   gem.files.exclude "doc/**/*"

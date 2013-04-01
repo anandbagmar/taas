@@ -1,4 +1,4 @@
-= TaaS - Test as a Service
+= TaaS
 
 Typically in organizations, there are multiple projects / products. Organizations like to have a common Test Automation
 solution across these products in an effort to standardize the framework.
@@ -9,7 +9,7 @@ Each product should be tested using the tools and technologies that are <b>"righ
 
 Yet - these different products talk to each other and you need a way to test the integration between them in an automated fashion.
 
-<b>"TaaS - Test as a Service"</b> is a product that allows you to validate the integration across a variety of products via Test Automation - the <b>"correct"</b> way.
+<b>"TaaS"</b> is a product that allows you to validate the integration across a variety of products via Test Automation - the <b>"correct"</b> way.
 
 = Documentation
 
