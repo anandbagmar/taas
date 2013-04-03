@@ -5,6 +5,7 @@ module TaaS
 
     def self.load(absolute_path)
       raise "File path cant be nil or empty" if (absolute_path.nil? || absolute_path.empty?)
+      puts "Loading contracts file from #{absolute_path}"
       @@contract_hash = YAML.load_file(absolute_path)["contracts"] rescue {}
     end
 

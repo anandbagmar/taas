@@ -1,6 +1,5 @@
 require "sinatra"
 
-
 Dir.glob(File.join("helper", "**", "*.rb")).each do |test_file|
   puts "requiring #{test_file}"
   require "#{test_file}"
