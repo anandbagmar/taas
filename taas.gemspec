@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Anand Bagmar, Akash Mishra"]
-  s.date = "2013-04-01"
+  s.date = "2013-04-03"
   s.description = "\"TaaS\" allows you to validate the integration across a variety of products via Test Automation - the \"correct\" way. TaaS uses a web service interface to run your end-2-end integration tests between two independent but related system. See the blog for more details: http://goo.gl/nVShb"
   s.email = ["abagmar@gmail.com, akash.mishra20@gmail.com"]
   s.extra_rdoc_files = [
