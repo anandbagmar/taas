@@ -11,12 +11,14 @@ module TaaS
 
     def initialize(url, timeout_in_seconds=1000)
       @url = url
+      p "url: " + url
       @timeout = timeout_in_seconds * 10000
     end
 
     def execute_contract(params={})
       response_body = request_taas_server(params)
 
+      p "execute_contract: params: " + params.inspect
       raise "TaaS Request is false" unless OutputParser.valid_server_response?(response_body)
 
       OutputParser.parse_server_output(response_body)

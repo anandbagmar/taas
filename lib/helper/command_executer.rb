@@ -1,3 +1,5 @@
+require 'pry'
+
 module TaaS
   class CommandExecuter
     def self.execute_command(dir, command)
